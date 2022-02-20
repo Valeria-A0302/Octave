@@ -31,15 +31,15 @@ xlabel("x");
 ylabel("y");
 title("First quarter f(-x)");
 
-#plot(x(1: end/4), f1(1: end/4))
-#xlabel("x");
-#ylabel("y");
-#title("First quarter f(-2x)");
+plot(x(1: end/4), f1(1: end/4))
+xlabel("x");
+ylabel("y");
+title("First quarter f(-2x)");
 
-#plot(x(1: end/4), f2(1: end/4))
-#xlabel("x");
-#ylabel("y");
-#title("First quarter f(-x + 5)");
+plot(x(1: end/4), f2(1: end/4))
+xlabel("x");
+ylabel("y");
+title("First quarter f(-x + 5)");
 
 domain = x > 0 & x < 7;
 plot(x(domain), f(domain))
@@ -48,12 +48,14 @@ ylabel("y");
 title("Function f(-x) on the interval [0, 7]");
 
 g = besselj(1,x);
-#plot(x, g)
-#xlabel("x");
-#ylabel("y");
-#title("Funtion g");
+plot(x, g)
+xlabel("x");
+ylabel("y");
+title("Funtion g");
 
 s = f + g;
 p = f.*g;
+
+
 
 
