@@ -179,11 +179,35 @@ imagesc(real(H));
 figure(11);
 imagesc(imag(H));
 #}
-
+#{
 figure(12);
 imagesc(abs(H));
-
+#}
 #{
 figure(13);
 imagesc(arg(H));
 #}
+#19
+middle = H(end/2, :);
+#{
+figure(14);
+imagesc(real(middle));
+colorbar;
+colormap blue;
+#}
+#{
+figure(15);
+imagesc(imag(middle));
+colorbar;
+colormap blue;
+#}
+#{
+figure(16);
+imagesc(abs(middle));
+colorbar;
+colormap blue;
+#}
+figure(17);
+imagesc(arg(middle));
+colorbar;
+colormap blue;
