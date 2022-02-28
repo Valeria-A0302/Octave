@@ -155,25 +155,16 @@ colormap blue;
 #}
 #17
 R = sqrt(X.^2 + Y.^2);
-#{
-figure(8);
-imagesc(R);
-colorbar;
-colormap blue;
-#}
 FI = atan2(X, Y);
-#{
-figure(9);
-imagesc(FI);
-colorbar;
-colormap blue;
-#}
+
 #18
 fr = airy(1, R);
 H = fr.* exp(1i*4*FI);
 #{
 figure(10);
 imagesc(real(H));
+colorbar;
+colormap blue;
 #}
 #{
 figure(11);
@@ -182,32 +173,29 @@ imagesc(imag(H));
 #{
 figure(12);
 imagesc(abs(H));
+colorbar;
+colormap blue;
 #}
 #{
 figure(13);
 imagesc(arg(H));
+colorbar;
+colormap blue;
 #}
 #19
 middle = H(end/2, :);
-#{
+
 figure(14);
-imagesc(real(middle));
-colorbar;
-colormap blue;
-#}
-#{
+plot(real(middle));
+
+
 figure(15);
-imagesc(imag(middle));
-colorbar;
-colormap blue;
-#}
-#{
+plot(imag(middle));
+
+
 figure(16);
-imagesc(abs(middle));
-colorbar;
-colormap blue;
-#}
+plot(abs(middle));
+
 figure(17);
-imagesc(arg(middle));
-colorbar;
-colormap blue;
+plot(arg(middle));
+
