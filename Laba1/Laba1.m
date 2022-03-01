@@ -47,7 +47,7 @@ figure(2)
 plot(x(end/4: end * 3/4), f(end/4: end * 3/4))
 xlabel("x");
 ylabel("y");
-title("First quarter f(-x)");
+title("Middle of function f(-x)");
 #}
 #9
 domain = x > 0 & x < 7;
@@ -63,7 +63,7 @@ g = besselj(1,x);
 plot(x, g)
 xlabel("x");
 ylabel("y");
-title("Funtion g");
+title("Funtion g(x)");
 #}
 #11
 s = f + g;
