@@ -5,7 +5,7 @@ a = -5;
 b = 5;
 hx = (b-a)/n;
 x = (a:hx:b - hx);
-size(x)
+#size(x)
 #5
 f = 1./(1 + x .^ 2);
 #6
@@ -14,19 +14,19 @@ figure(1)
 plot(x, f)
 xlabel("x");
 ylabel("y");
-title("Function f(x)");
+title("Функция f(x)");
 
 figure(2)
 plot(x, abs(f))
 xlabel("x");
 ylabel("y");
-title("Amplitude of function f(x)");
+title("Амплитуда функции f(x)");
 
 figure(3)
 plot(x, arg(f))
 xlabel("x");
 ylabel("y");
-title("Phase of function f(x)");
+title("Фаза функции f(x)");
 #}
 #7
 int = sum(f*hx);
@@ -36,10 +36,11 @@ p = -5;
 q = 5;
 hE = (q - p)/m;
 E = (p: hE: q - hE);
-size(E)
+#size(E)
 #9
 
-A = exp(-2*pi*1i*E'.*x);
+A = exp(-2*pi*1i*E.'*x);
+#size(A)
 #{
 figure(4)
 imagesc(abs(A))
@@ -48,43 +49,42 @@ figure(5)
 imagesc(arg(A))
 #}
 #10
-F = A*f'.*hx;
+F = A*f.'*hx;
 #{
 figure(6)
 plot(E, F)
 xlabel("x");
 ylabel("y");
-title("Function F(x)");
+title("Функция F(x)");
 
 figure(7)
 plot(E, abs(F))
 xlabel("x");
 ylabel("y");
-title("Amplitude of function F(E)");
+title("Амплитуда функции F(E)");
 
 figure(8)
 plot(E, arg(F))
 xlabel("x");
 ylabel("y");
-title("Phase of function F(E)");
+title("Фаза функции F(E)");
 #}
 #11
-F2 = 2*pi*(exp(2*pi*E) - exp(-2*pi*E))/2;
-#F2 = 2*pi*asinh(2*pi*E);
+F2 = pi*exp(-2*pi*abs(E));
 #12
 #{
 figure(1)
 hold on
-#plot(E, abs(F), ";Численный результат;");
+plot(E, abs(F), ";Численный результат;");
 plot(E, abs(F2), ";Аналитический результат;"); 
-title("Amplitude");
+title("Амплитуда");
 hold off
 
 figure(2)
 hold on
-#plot(E, arg(F), ";Численный результат;");
+plot(E, arg(F), ";Численный результат;");
 plot(E, arg(F2), ";Аналитический результат;");
-title("Phase");
+title("Фаза");
 hold off
 #}
 #13
@@ -105,7 +105,7 @@ plot(x, arg(f));
 plot(x, arg(f2));
 title("Фаза");
 hold off
-#)
+#}
 
 
 
