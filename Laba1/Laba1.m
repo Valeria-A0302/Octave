@@ -185,18 +185,16 @@ colorbar;
 #}
 #19
 middle = H(end/2, :);
-
+#{
 figure(14);
 plot(real(middle));
 
-
 figure(15);
 plot(imag(middle));
-
 
 figure(16);
 plot(abs(middle));
 
 figure(17);
 plot(arg(middle));
-
+#}
