@@ -55,7 +55,7 @@ figure(6)
 plot(E, F)
 xlabel("x");
 ylabel("y");
-title("Функция F(x)");
+title("Функция F(E)");
 
 figure(7)
 plot(E, abs(F))
