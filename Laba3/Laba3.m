@@ -54,9 +54,9 @@ P = 5;
 hp = P/n;
 p = (0: hp: P - hp);
 #size(p)
-K = besselj(m, 2 * pi * p' * r).*r;
+K = besselj(m, 2 * pi * p.' * r).*r;
 #10
-F = (K * f') * (hr*(2 * pi / i^m));
+F = (K * f.') * (hr*(2 * pi / i^m));
 #11
 #{
 figure(3);
