@@ -3,12 +3,9 @@ n = 2500;
 a = -5;
 b = 5;
 hx = (b-a)/n;
-x = (a:hx:b-hx);
 
-p = -5;
-q = 5;
-hy = (q-p)/n;
-y = (p:hy:q-hy);
+x = (a:hx:b-hx);
+y = (a:hx:b-hx);
 
 alf = input('¬ведите значение параметра alpha=');
 bet = input('¬ведите значение параметра betta=');
@@ -16,32 +13,41 @@ bet = input('¬ведите значение параметра betta=');
 [X,Y] = meshgrid(x,y);
 f = exp(1i*alf*X.^3 + 1i*bet*Y.^3);
 
-m = 16384;                                         #m(2 в степени 16 = 65536)
-f_new = zeros(m);
-f_new((m/2-(n/2-1):m/2+n/2),(m/2-(n/2-1):m/2+n/2)) = f_new((m/2-(n/2-1):m/2+n/2),(m/2-(n/2-1):m/2+n/2)).+ f;
+m = 16284;
 
-rightLines = zeros(m/2,1);                         #делю каждую строку матрицы пополам и мен€ю половинки местами
-rightLines = f_new(1:m/2,1);
-f_new(1:m/2,1) = f_new(m/2+1:m,1);
-f_new(m/2+1:m,1) = rightLines;
+for i = 1:n
+F(i,1:n) = FourierTransform(m, n, f(i,1:n), hx);
+endfor
 
-rightColumns = zeros(1,m/2);                       #делю каждый столбец новой матрицы пополам и мен€ю половинки местами
-rightColumns = f_new(1,1:m/2);
-f_new(1,1:m/2) = f_new(1,m/2+1:m);
-f_new(1,m/2+1:m) = rightColumns;
+for i = 1:n
+j = zeros(1,n);
+j = FourierTransform(m, n, transpose(F(1:n,i)), hx);
+F(1:n,i) = transpose(j);
+endfor
 
-F = fft2(f_new)*hx;
+p = n^2/(4*b*m);
+q = -p;
+hu = (p-q)/n;
 
-rightLinesF = zeros(m/2,1);                         #делю каждую строку матрицы пополам и мен€ю половинки местами
-rightLinesF = F(1:m/2,1);
-F(1:m/2,1) = F(m/2+1:m,1);
-F(m/2+1:m,1) = rightLinesF;
+u = (q:hu:p - hu);
+v = (q:hu:p - hu);
 
-rightColumnsF = zeros(1,m/2);                       #делю каждый столбец новой матрицы пополам и мен€ю половинки местами
-rightColumnsF = F(1,1:m/2);
-F(1,1:m/2) = F(1,m/2+1:m);
-F(1,m/2+1:m) = rightColumnsF;
+figure(1)
+imagesc(u, v, abs(F))
+colorbar;
+title('јмплитуда полученной функции');
 
-centerF = F((m/2-(n/2-1):m/2+n/2),(m/2-(n/2-1):m/2+n/2));
+figure(2)
+imagesc(u, v, arg(F))
+colorbar;
+title('‘аза полученной функции');
 
-size(centerF)
+figure(3)
+imagesc(x, y, abs(f))
+colorbar;
+title('јмплитуда исходной функции');
+
+figure(4)
+imagesc(x, y, arg(f))
+colorbar;
+title('‘аза исходной функции');
