@@ -1,4 +1,4 @@
-n = 2500;                                          #задаю число точек рабиения
+n = 2500;                                          #задаю число точек разбиения
 a = -5;                                            #заданию интервал
 b = 5;
 hx = (b-a)/n;                                      #задаю шаг
@@ -32,15 +32,27 @@ hu = (p-q)/n;
 u = (q:hu:p - hu);
 
 figure(1)
-hold on
-plot(u, abs(centerF), ";Полученная функция;")
-plot(x,abs(f), ";Исходная функция;")
-title('Амплитуда');
-hold off
+plot(u, abs(centerF))
+xlabel('x');
+ylabel('y');
+title('Амплитуда полученной функции');
+
 
 figure(2)
-hold on
-plot(u, arg(centerF), ";Полученная функция;")
-plot(x,arg(f), ";Исходная функция;")
-title('Фаза');
-hold off
+plot(x,abs(f))
+xlabel('x');
+ylabel('y');
+title('Амплитуда исходной функции');
+
+figure(3)
+plot(u, arg(centerF))
+xlabel('x');
+ylabel('y');
+title('Фаза полученной функции');
+
+figure(4)
+plot(x,arg(f))
+xlabel('x');
+ylabel('y');
+title('Фаза исходной функции');
+
